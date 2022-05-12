@@ -1,0 +1,11 @@
+{
+  "baseUrl": "https://consumer-research-pr-1573.pr.analytics-stage.gcp0.bwcom.net",
+  "env": {
+    "ADMIN_USERNAME": "admin-bcr-analytics@brandwatch.com",
+    "REGULAR_USERNAME": "regular-bcr-analytics@brandwatch.com",
+    "PROJECT_ID": 162548179,
+    "api_url": "https://api.stage.brandwatch.net",
+    "SOCIAL_PANEL_USERNAME": "social-panel-test@brandwatch.com",
+    "SOCIAL_PANEL_PASSWORD": "dnq5rye5PNM_apf2gcn"
+  }
+}

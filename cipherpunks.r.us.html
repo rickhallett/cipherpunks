@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: monospace, Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 14px;
+            background-color: black;
+            color: limegreen;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+            display: block;
+            min-width: 50%;
+            background-color: black;
+            color: green;
+        }
+
+        button {
+            display: inline;
+            margin-top: 10px;
+            font-family: inherit;
+            background-color: limegreen;
+            color: black;
+        }
+    </style>
+  </head>
+  <body>
+    <main>
+
+        <label for="key">Key</label>
+        <textarea type="text" name="key" id="key" rows="5"></textarea>
+        <label for="input">Input</label>
+        <textarea type="textarea" name="input" id="input" rows="10"></textarea>
+        <div class="buttons">
+            <button onclick="handlers.encrypt()">Encrypt</button>
+            <button onclick="handlers.decrypt()">Decrypt</button>
+            <button onclick="handlers.swap()">Swap</button>
+
+        </div>
+        <label for="output">Output</label>
+        <textarea type="textarea" name="output" id="output" rows="10"></textarea>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.js" integrity="sha512-NQVmLzNy4Lr5QTrmXvq/WzTMUnRHmv7nyIT/M6LyGPBS+TIeRxZ+YQaqWxjpRpvRMQSuYPQURZz/+pLi81xXeA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+      const encryptWithAES = (text, passphrase) => {
+        return CryptoJS.AES.encrypt(text, passphrase).toString();
+      };
+
+      const decryptWithAES = (ciphertext, passphrase) => {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
+        const originalText = bytes.toString(CryptoJS.enc.Utf8);
+        return originalText;
+      };
+
+      const handlers = {
+        encrypt: () => {
+          const passphrase = document.getElementById("key").value;
+          const input = document.getElementById("input").value;
+          const output = document.getElementById("output");
+
+          console.log({passphrase, input, output})
+
+          output.value = encryptWithAES(input, passphrase);
+        },
+        decrypt: () => {
+          const passphrase = document.getElementById("key").value;
+          const input = document.getElementById("input").value;
+          const output = document.getElementById("output");
+
+          console.log({passphrase, input, output})
+
+          output.value = decryptWithAES(input, passphrase);
+        },
+        swap: () => {
+            const input = document.getElementById("input");
+          const output = document.getElementById("output");
+
+          const temp = input.value;
+
+          input.value = output.value;
+          output.value = ''
+        }
+      };
+    </script>
+  </body>
+</html>

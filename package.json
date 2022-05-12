@@ -1,0 +1,12 @@
+{
+  "name": "encrypt-decrypt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+ "homepage": "", 
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
